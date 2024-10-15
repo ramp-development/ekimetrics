@@ -1,10 +1,13 @@
+import { log } from '$utils/log';
+
+import { forms } from './forms';
 import { nav } from './nav';
 import { sliders } from './sliders';
 
 export const components = () => {
-  // eslint-disable-next-line no-console
-  console.log('components');
+  log('components');
 
   nav();
   sliders();
+  forms();
 };

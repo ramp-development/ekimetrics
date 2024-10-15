@@ -1,6 +1,7 @@
+import { log } from '$utils/log';
+
 export const scroll = () => {
-  // eslint-disable-next-line no-console
-  console.log('scroll');
+  log('scroll');
 
   const nav = document.querySelector<HTMLElement>('.nav_component');
   if (!nav) return;

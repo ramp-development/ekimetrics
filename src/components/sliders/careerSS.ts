@@ -1,33 +1,29 @@
 import Splide from '@splidejs/splide';
 
+import { log } from '$utils/log';
+
 export const careerSS = () => {
-  // eslint-disable-next-line no-console
-  console.log('careerSS');
+  log('careerSS');
 
-  const component = document.querySelector<HTMLDivElement>('.career-ss_slider');
-  if (!component) return;
+  const components = document.querySelectorAll<HTMLDivElement>('.career-ss_slider');
+  components.forEach((component) => initCareerSSSlider(component));
 
-  const splide = new Splide(component, {
-    type: 'slider',
-    gap: '1.25rem',
-    perPage: 3,
-    perMove: 1,
-    // autoplay: false,
-    // pagination: false,
-    // arrows: true,
-    breakpoints: {
-      991: {
-        perPage: 2,
+  function initCareerSSSlider(component: HTMLDivElement) {
+    const splide = new Splide(component, {
+      type: 'slider',
+      gap: '1.25rem',
+      perPage: 3,
+      perMove: 1,
+      breakpoints: {
+        991: {
+          perPage: 2,
+        },
+        767: {
+          perPage: 1,
+        },
       },
-      767: {
-        perPage: 1,
-      },
-    },
-  });
+    });
 
-  console.log('before');
-  splide.mount();
-  console.log('after');
-
-  console.log(splide);
+    splide.mount();
+  }
 };

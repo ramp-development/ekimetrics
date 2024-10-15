@@ -1,29 +1,32 @@
 import Splide from '@splidejs/splide';
 
+import { log } from '$utils/log';
+
 export const vertical = () => {
-  // eslint-disable-next-line no-console
-  console.log('vertical');
+  log('vertical');
 
-  const component = document.querySelector<HTMLDivElement>('.vertical-slider_component');
-  if (!component) return;
+  const components = document.querySelectorAll<HTMLDivElement>('.vertical-slider_component');
+  components.forEach((component) => initVerticalSlider(component));
 
-  const splide = new Splide(component, {
-    direction: 'ttb',
-    height: calculateHeight(component),
-    type: 'loop',
-    perMove: 1,
-    autoplay: false,
-    pagination: false,
-    arrows: true,
-  });
+  function initVerticalSlider(component: HTMLDivElement) {
+    const splide = new Splide(component, {
+      direction: 'ttb',
+      height: calculateHeight(component),
+      type: 'loop',
+      perMove: 1,
+      autoplay: false,
+      pagination: false,
+      arrows: true,
+    });
 
-  function calculateHeight(component: HTMLDivElement) {
-    const perPage = Number(component.dataset.perPage) || 3,
-      slide = component.querySelector<HTMLDivElement>('.vertical-slider_slide'),
-      height = slide ? slide.offsetHeight * perPage : '38rem';
+    function calculateHeight(component: HTMLDivElement) {
+      const perPage = Number(component.dataset.perPage) || 3,
+        slide = component.querySelector<HTMLDivElement>('.vertical-slider_slide'),
+        height = slide ? slide.offsetHeight * perPage : '38rem';
 
-    return height;
+      return height;
+    }
+
+    splide.mount();
   }
-
-  splide.mount();
 };
