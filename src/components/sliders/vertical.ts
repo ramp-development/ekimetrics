@@ -17,6 +17,7 @@ export const vertical = () => {
       autoplay: false,
       pagination: false,
       arrows: true,
+      drag: false,
     });
 
     function calculateHeight(component: HTMLDivElement) {
